@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"><![endif]-->
+<!--[if IE 9]><html class="ie ie9"><![endif]-->
+<!--[if !IE]><!--> <html> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+  <!-- <link href="favicon.ico" rel="icon" /> -->
+  <link rel="stylesheet" media="all" href="css/reset.css" />
+  <link rel="stylesheet" media="all" href="css/common.css" />
+  <link rel="stylesheet" media="all" href="css/account.css" />
+  <title>注册</title>
+ </head>
+ <body>
+ 	<!-- 全局顶部栏 -->
+ 	<div class="m-navbar" role="navigation">
+  		<div class="limit clearfix">
+	    	<a class="logo icon icon-logo fl" href="/"></a>
+	    	<div class="fr login-box" >
+	    		<i class="icon icon-login_icon"></i>
+	    		<a class="sign-up" href="/register">注册</a> /
+	        	<a class="log-in" href="/login">登录</a>
+	    	</div>
+	    	<div class="fr login-box" style="display: none">
+	    		<a href="" class="record"><i class="icon icon-record_icon"></i>购买记录</a>
+	    		<span class="name"><a href="/modify_account">--</a>，已登录</span>
+	    		<i class="icon icon-islogin_icon"></i>
+	    	</div>
+     	</div>
+    </div>
+    <!-- end -->
+
+    <div class="wrap">
+	    <!-- 内容 -->
+	    <div class="u-content-wrap register-wrap">
+	    	<div class="header clearfix">
+	    		<p class="u-title fl"><i></i>注册骨朵账号</p>
+	    		<a href="/" class="go-home fr">&lt;&lt; 返回首页</a>
+	    	</div>
+	    	<div class="body bd-b">
+	    		<img src="images/reg_step2.png" class="step" />
+				<div class="alert alert-danger"></div>
+	    		<form method="post" action="" id="registerForm" class="m-form">
+	    			<div class="form-group clearfix">
+				    	<label for="username" class="control-label">姓&nbsp;&nbsp;&nbsp;名</label>
+					    <div class="control-input">
+					       <input type="text" class="form-control" id="username" name="username" placeholder="请输入姓名" data-msg="请输入姓名" />
+					    </div>
+					    
+				  	</div>
+				  	<div class="form-group clearfix">
+				    	<label for="email" class="control-label">邮&nbsp;&nbsp;&nbsp;箱</label>
+					    <div class="control-input">
+					       <input type="text" class="form-control" id="email" name="email" placeholder="请输入邮箱" data-msg="请输入邮箱" />
+					    </div>
+				  	</div>
+	    			<div class="form-group clearfix">
+				    	<label for="company" class="control-label">公&nbsp;&nbsp;&nbsp;司</label>
+					    <div class="control-input">
+					       <input type="text" class="form-control" id="company" name="company" placeholder="请输入您的公司" data-msg="请输入您的公司" />
+					    </div>
+				  	</div>
+				  	<div class="form-group clearfix">
+				    	<label for="position" class="control-label">职&nbsp;&nbsp;&nbsp;位</label>
+					    <div class="control-input choose-pos-box">
+					        <div class="choose-pos">请选择您的职位<em class="arrow icon icon-arrow_b"></em></div>
+					        <ul class="position-list" style="display: none">
+					       	    <li class="odd">导演/编导</li>
+					       	    <li class="even"></li>
+					       	    <li class="odd">作家/编剧</li>
+					       	    <li class="even"></li>
+					       	    <li class="odd">经纪人/艺人</li>
+					       	    <li class="even"></li>
+					       	    <li class="odd">文案/策划</li>
+					       	    <li class="even"></li>
+					       	    <li class="last odd">公关/媒介</li>
+					        </ul>
+					       <input type="hidden" class="form-control" id="position" name="position" value="" data-msg="请选择您的职位" />
+					    </div>
+				  	</div>
+	    			<button class="btn next-btn" type="submit">下一步</button>
+	    		</form>
+	    		
+	    	</div>
+	    	<div class="foot"></div>
+	    </div>
+	    <!-- end -->
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/messages_zh.js"></script>
+    <!--[if lt IE 9]>
+	  <script type="text/javascript" src="js/PIE.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+		$(function(){
+			$("#registerForm").validate({
+				debug: true,
+				ignore: ".ignore",
+				focusCleanup: true,
+				focusInvalid : true,
+				errorElement: "i",
+				errorClass: "error",
+			    errorContainer: $(".form-group i"),
+			    errorPlacement: function(error, element) {
+			      error.appendTo(element.parents(".form-group"));
+			      error.removeClass('success');
+			    },
+			    validClass: "success",
+			    success: function(element) {
+			      element.addClass("success");
+			    },
+				rules:{
+					username: {
+						required: true,
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					company: {
+						required: true,
+					},
+				    position: {
+				      	required: true,
+				    },
+				},
+				
+			    submitHandler: function(form){  
+			    	if(!$("#registerForm").valid()){
+			    		return false;
+			    	}
+                    var nikeName = $("#username").val(),email = $("#email").val(),company = $("#company").val(),position = $("#position").val(),phone = $.cookie('userPhone'),token = $.cookie('userToken');
+                    $.ajax({
+                        type : "post",
+                        url : "/user/perfectInfo?t=" + new Date().getTime(),
+                        dataType : "json",
+                        data : {
+                            userName: phone,
+                            token: token,
+                            nikeName : nikeName,
+                            email : email,
+                            job : position,
+                            company:company
+                        }
+                    })
+					.done(function ( data ) {
+						switch(data.code) {
+							case "0":
+								window.location.href="/register_finish";
+								break;
+							default:
+								$(".alert-danger").text(data.message).show();
+						}
+					})
+					.fail(function (jqXHR, textStatus,errorThrown) {
+						console.log(jqXHR);
+					});
+                },   
+			});
+
+			var showPosition = (function(){
+				var show = function(){
+					$(".choose-pos").on("click",function(){
+						window.event? window.event.cancelBubble = true : e.stopPropagation();
+						$(".position-list").slideDown(400);
+					});
+				};
+				var hide = function(){
+					$("body").on("click",function(e){
+						$(".position-list").slideUp(400);
+					});
+				}
+				var choose = function(){
+					$(".position-list li.odd").on("click",function(){
+						var position = $(this).text();
+						$('#position').val(position);
+						$(".choose-pos").text(position);
+						$("#registerForm").valid();
+					});
+				}
+				return {
+					clickPos:show(),
+					hidePos:hide(),
+					choosePos:choose()
+				}
+			})()
+			
+			showPosition.clickPos;
+			showPosition.hidePos;
+			showPosition.choosePos;
+
+
+		})
+	</script>
+ </body>
+ </html>

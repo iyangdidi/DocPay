@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"><![endif]-->
+<!--[if IE 9]><html class="ie ie9"><![endif]-->
+<!--[if !IE]><!--> <html> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+  <!-- <link href="favicon.ico" rel="icon" /> -->
+  <link rel="stylesheet" media="all" href="css/reset.css" />
+  <link rel="stylesheet" media="all" href="css/common.css" />
+  <link rel="stylesheet" media="all" href="css/report.css" />
+  <title>报告</title>
+ </head>
+ <body>
+ 	<!-- 全局顶部栏 -->
+ 	<div class="m-navbar" role="navigation">
+  		<div class="limit clearfix">
+	    	<a class="logo icon icon-logo fl" href="/"></a>
+	    	<div class="fr login-box" >
+	    		<i class="icon icon-login_icon"></i>
+	    		<a class="sign-up" href="/register">注册</a> /
+	        	<a class="log-in" href="/login">登录</a>
+	    	</div>
+	    	<div class="fr login-box logged-in" style="display: none">
+	    		<a href="/record_list" class="record"><i class="icon icon-record_icon"></i>购买记录</a>
+	    		<span class="name"><a href="/modify_account">--</a>，已登录</span>
+	    		<a href="/modify_account"><i class="icon icon-islogin_icon"></i></a>
+	    	</div>
+     	</div>
+    </div>
+    <!-- end -->
+
+    <div class="wrap">
+    	<!-- tab切换 -->
+    	<div class="tab-wrap">
+		    <ul class="u-tab clearfix">
+		    	<li class="active"><a href="/">白皮书</a></li>
+				<li><a th:href="@{/doc/getReportList(reportType=0)}">周报</a></li>
+				<li><a th:href="@{/doc/getReportList(reportType=1)}">月报</a></li>
+		    	<li class=""><a href="">季报</a></li>
+		    	<li><a href="">半年报</a></li>
+		    </ul>
+		    <a href="/" class="go-home">&lt;&lt; 返回首页</a>
+	    </div>
+	    <!-- end -->
+
+	    <!-- 内容 -->
+	    <div class="u-content-wrap index-wrap">
+	    	<ul class="ul-wrap">
+	    		<li class="clearfix">
+		    		<div class="fl">
+		    			<h2 class="u-title"><i></i><a href="/detail">2016年网络剧报告</a></h2>
+		    			<p class="content">最专业的平台服务</p>
+		    		</div>
+	    			<div class="fr">
+	    				<p class="u-cost"><em>200</em> 元/份</p>
+	    				<a href="/pay" class="pay-btn">立即支付</a>
+	    			</div>
+	    		</li>
+	    		<li class="clearfix">
+		    		<div class="fl">
+		    			<h2 class="u-title"><i></i><a href="/detail">2016年网络剧报告</a></h2>
+		    			<p class="content">最专业的平台服务最专业的平台服务最专业的平台服务最专业的平台服务</p>
+		    		</div>
+	    			<div class="fr">
+	    				<p class="u-cost"><em>200</em> 元/份</p>
+	    				<a href="javascript:void(0);" class="pay-btn">立即支付</a>
+	    			</div>
+	    		</li>
+	    		<li class="clearfix">
+		    		<div class="fl">
+		    			<h2 class="u-title"><i></i><a href="/detail">2016年网络剧报告</a></h2>
+		    			<p class="content">最专业的平台服务最专业的平台服务最专业的平台服务最专业的平台服务</p>
+		    		</div>
+	    			<div class="fr">
+	    				<p class="u-cost"><em>200</em> 元/份</p>
+	    				<a href="javascript:void(0);" class="pay-btn">立即支付</a>
+	    			</div>
+	    		</li>
+	    		<li class="clearfix">
+		    		<div class="fl">
+		    			<h2 class="u-title"><i></i><a href="/detail">2016年网络剧报告</a></h2>
+		    			<p class="content">最专业的平台服务最专业的平台服务最专业的平台服务最专业的平台服务</p>
+		    		</div>
+	    			<div class="fr">
+	    				<p class="u-cost"><em>200</em> 元/份</p>
+	    				<a href="javascript:void(0);" class="pay-btn">立即支付</a>
+	    			</div>
+	    		</li>
+	    	</ul>
+	    	
+	    </div>
+	    <!-- end -->
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/account_validate.js"></script>
+
+    <!--[if lt IE 9]>
+	  <script type="text/javascript" src="js/PIE.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+		
+		function toWeekReport(){
+			/*$.get("http://localhost:8085/doc/getReportList", { reportType:0 },
+					  function(data){
+					    alert("Data Loaded: " + data);
+					  });*/
+		    
+		}
+		$(function(){
+
+		})
+	</script>
+ </body>
+ </html>

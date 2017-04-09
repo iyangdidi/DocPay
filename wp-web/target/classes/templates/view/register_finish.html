@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"><![endif]-->
+<!--[if IE 9]><html class="ie ie9"><![endif]-->
+<!--[if !IE]><!--> <html> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+  <!-- <link href="favicon.ico" rel="icon" /> -->
+  <link rel="stylesheet" media="all" href="css/reset.css" />
+  <link rel="stylesheet" media="all" href="css/common.css" />
+  <link rel="stylesheet" media="all" href="css/account.css" />
+  <title>注册</title>
+ </head>
+ <body>
+ 	<!-- 全局顶部栏 -->
+ 	<div class="m-navbar" role="navigation">
+  		<div class="limit clearfix">
+	    	<a class="logo icon icon-logo fl" href="/"></a>
+	    	<div class="fr login-box" >
+	    		<i class="icon icon-login_icon"></i>
+	    		<a class="sign-up" href="/register">注册</a> /
+	        	<a class="log-in" href="/login">登录</a>
+	    	</div>
+	    	<div class="fr login-box" style="display: none">
+	    		<a href="" class="record"><i class="icon icon-record_icon"></i>购买记录</a>
+	    		<span class="name"><a href="">--</a>，已登录</span>
+	    		<i class="icon icon-islogin_icon"></i>
+	    	</div>
+     	</div>
+    </div>
+    <!-- end -->
+
+    <div class="wrap">
+	    <!-- 内容 -->
+	    <div class="u-content-wrap register-wrap register-f-wrap">
+	    	<div class="header clearfix">
+	    		<p class="u-title fl"><i></i>注册骨朵账号</p>
+	    		<a href="/" class="go-home fr">&lt;&lt; 返回首页</a>
+	    	</div>
+	    	<div class="body bd-b">
+	    		<img src="images/reg_step3.png" class="step" />
+	    		<p class="text">注册完成，<em>3</em>秒后自动跳转至首页</p>
+	    		<button class="btn">立即前往</button>
+	    	</div>
+	    	<div class="foot"></div>
+	    </div>
+	    <!-- end -->
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <!--[if lt IE 9]>
+	  <script type="text/javascript" src="js/PIE.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+	var t = 3; 
+	function refer(){  
+	    if(t === 0){ 
+	        window.location.href = "/";
+	    } 
+	    $(".text em").text(t);
+	    t--; 
+	} 
+	$(function(){
+		setInterval("refer()",1000);
+	})
+	</script>
+ </body>
+ </html>

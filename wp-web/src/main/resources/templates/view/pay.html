@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"><![endif]-->
+<!--[if IE 9]><html class="ie ie9"><![endif]-->
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"/>
+  <!-- <link href="favicon.ico" rel="icon"> -->
+  <link rel="stylesheet" media="all" href="css/reset.css" />
+  <link rel="stylesheet" media="all" href="css/common.css" />
+  <link rel="stylesheet" media="all" href="css/pay.css" />
+  <title>白皮书报告</title>
+ </head>
+ <body>
+ 	<!-- 全局顶部栏 -->
+ 	<div class="m-navbar" role="navigation">
+  		<div class="limit clearfix">
+	    	<a class="logo icon icon-logo fl" href="/"></a>
+	    	<div class="fr login-box" style="display: none">
+	    		<i class="icon icon-login_icon"></i>
+	    		<a class="sign-up" href="/register">注册</a> /
+	        	<a class="log-in" href="/login">登录</a>
+	    	</div>
+	    	<div class="fr login-box logged-in" >
+	    		<a href="/record_list" class="record"><i class="icon icon-record_icon"></i>购买记录</a>
+	    		<span class="name"><a href="">--</a>，已登录</span>
+				<a href="/modify_account"><i class="icon icon-islogin_icon"></i></a>
+	    	</div>
+     	</div>
+    </div>
+    <!-- end -->
+
+    <div class="wrap">
+    	<!-- tab切换 -->
+    	<div class="tab-wrap">
+		    <ul class="u-tab clearfix">
+		    	<li class="active"><a href="/">白皮书</a></li>
+				<li><a href="/week_report">周报</a></li>
+				<li><a href="/month_report">月报</a></li>
+		    	<li class=""><a href="">季报</a></li>
+		    	<li><a href="">半年报</a></li>
+		    </ul>
+		    <a href="/" class="go-home">&lt;&lt; 返回首页</a>
+	    </div>
+	    <!-- end -->
+
+	    <!-- 内容 -->
+	    <div class="u-content-wrap">
+	    	<div class="header bd-b clearfix">
+	    		<p class="u-title fl"><i></i>正在购买</p>
+	    		<h2 class="fl name">2016年网剧研究报告</h2>
+	    		<p class="u-cost fl"><em>200</em> 元/份</p>
+	    	</div>
+	    	<div class="body bd-b">
+	    		<p class="">请选择支付方式</p>
+	    		<ul class="choose clearfix">
+	    			<li class="alipay fl"><img src="images/alipay.png" /><i class="selected icon-pay" style="display: none"></i></li>
+	    			<li class="wechatpay fl"><img src="images/wechatpay.png" /><i class="selected icon-pay" style="display: none"></i></li>
+	    			<li class="wechatpay fl" style="margin-left:157px;border:0;margin-top: -43px"><div id="qrcode"></div></li>
+	    		</ul>
+	    		<button class="btn pay-btn" id="pay" onClick="payForDoc()">立即支付</button>
+	    	</div>
+	    	<div class="foot"></div>
+	    </div>
+	    <!-- end -->
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/account_validate.js"></script>
+  	<script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script> 
+    <!--[if lt IE 9]>
+	  <script type="text/javascript" src="js/PIE.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+		var intervalID;
+		function checkOrder(chargeId){
+			$.ajax({
+                type: "GET",
+                url: "http://localhost:8085/order/checkOrder?chargeId="+chargeId,
+                dataType: "json",
+                success: function(data) {
+                    //alert(msg);
+                    var state = data.state;
+                    if(data.state==11){//订单已经支付
+                    	window.clearInterval(intervalID);
+                    	alert("支付成功！");
+                    	//document.getElementById("qrcode").innerHTML = "";
+                    	//TODO
+                    	window.location.href="/detail";
+                    }
+                }
+            });
+		};
+		
+		function payForDoc(){
+		    var requestPayForDoc = {
+		    		"docName":"2016年网络大电影产业发展研究报告",
+		    		"payType":1,//1=支付宝；2=微信
+		    		"amount":1,//价格1=1分钱
+		    		"docDesc":"desc"
+		    };    
+		    $.ajax({
+		        type: "POST",
+		        url: "http://localhost:8085/doc/payForDoc",
+		        contentType: "application/json; charset=utf-8",
+		        data: JSON.stringify(requestPayForDoc),
+		        dataType: "json",
+		        success: function (data) {
+		        	var t = data;
+					//如果用户已经发起过支付，且支付未完成
+					if(data.state==6){//6=支付中
+						alert(data.content);
+						window.location.href="/";
+					}else if(data.state==8){//8=已经支付
+						alert(data.content);
+						window.location.href="/detail";
+					}else{
+						var charge = data.charge;
+			            var channel = charge.channel;
+						var credential = charge.credential;
+						var url;
+						if(channel == "alipay_qr"){
+							url = credential.alipay_qr;				
+						}else if(channel == "wx_pub_qr"){
+							url = credential.wx_pub_qr;	
+						}			
+						jQuery('#qrcode').qrcode(url);
+						
+						//轮询支付结果，更新订单状态
+						intervalID = setInterval('checkOrder("'+charge.id+'")',5000);
+					}					
+		        },
+		        error: function (message) {
+		        	alert("支付中，请等待支付完成");
+		        	window.location.href="/detail";
+		        }
+		    });
+		};
+
+		$(function(){
+			$(".choose li").on("click",function(){
+				$(this).addClass("active").find('.selected').show().parent().siblings('li').removeClass("active").find('.selected').hide();
+			});
+		})
+	</script>
+ </body>
+ </html>

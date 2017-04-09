@@ -1,0 +1,66 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-arrow_b {
+  background-image: url(../images/sprite/sprite.png);
+  background-position: -268px -80px;
+  width: 12px;
+  height: 7px;
+}
+.icon-error {
+  background-image: url(../images/sprite/sprite.png);
+  background-position: -151px -80px;
+  width: 20px;
+  height: 20px;
+}
+.icon-islogin_icon {
+  background-image: url(../images/sprite/sprite.png);
+  background-position: -231px -80px;
+  width: 17px;
+  height: 17px;
+}
+.icon-login_icon {
+  background-image: url(../images/sprite/sprite.png);
+  background-position: -63px -80px;
+  width: 24px;
+  height: 24px;
+}
+.icon-logo {
+  background-image: url(../images/sprite/sprite.png);
+  background-position: 0px 0px;
+  width: 365px;
+  height: 60px;
+}
+.icon-pay {
+  background-image: url(../images/sprite/sprite.png);
+  background-position: 0px -80px;
+  width: 43px;
+  height: 43px;
+}
+.icon-record_icon {
+  background-image: url(../images/sprite/sprite.png);
+  background-position: -107px -80px;
+  width: 24px;
+  height: 24px;
+}
+.icon-right {
+  background-image: url(../images/sprite/sprite.png);
+  background-position: -191px -80px;
+  width: 20px;
+  height: 20px;
+}

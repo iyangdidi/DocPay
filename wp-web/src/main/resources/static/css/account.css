@@ -1,0 +1,62 @@
+.u-content-wrap .u-title{font-size: 24px;color:#353535;}
+.u-content-wrap .u-title i{top:3px;}
+/*** login ***/
+.u-content-wrap{margin-top: 50px}
+.login-wrap .header{padding:40px 0 86px 0;}
+.login-wrap .u-title{font-size: 22px;color:#343434;}
+.login-wrap .u-title i{top:3px;}
+.login-wrap .forget-pwd{color:#70d3d3;margin-left: 440px}
+.login-wrap .register-btn{display:block;margin-top: 37px;text-align: center;color:#ffa609;margin-left: -239px}
+.login-wrap .m-form{padding-bottom:110px;}
+.foot{height:125px;}
+
+/*** register ***/
+.register-wrap .header{padding-top:40px;}
+.register-wrap .step{margin:44px 0 40px 40px;}
+.register-wrap .next-btn{margin-bottom: 70px;margin-top:44px;}
+.captcha-btn{position: absolute;right:10px;top:13px;width: 110px;height: 46px;background: #ffa609;color:#FFF;text-align: center;border-radius: 10px;line-height: 46px}
+.captcha-btn:hover{background: #ff9346}
+.captcha-btn.disabled{background: #CCC;}
+
+/*** register next ***/
+.register-wrap .choose-pos{
+    width:405px;height: 72px;line-height: 72px;border:1px solid #ccc;border-radius: 10px;font-size: 16px;padding-left: 35px;cursor: pointer;
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(242,242,242,1) 65%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(242,242,242,1) 65%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(242,242,242,1) 65%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+}
+.register-wrap .choose-pos em{position: absolute;top:34px;right:30px;}
+.register-wrap .position-list{width:100%;position: absolute;top:73px;left:0;border:1px solid #CCC;border-radius: 10px;background: #FFF;padding-top:10px;}
+.register-wrap .position-list li{cursor: pointer;}
+.register-wrap .position-list li:nth-child(odd){width: 100%;padding:13px 34px 13px 34px;}
+.register-wrap .position-list li:nth-child(even){width:346px;margin: 0 auto;border-top: 1px solid #ccc}
+.ie8 .position-list li.odd{width: 100%;padding:12px 34px 12px 34px;}
+.ie8 .position-list li.even{width:346px;margin: 0 auto;border-top: 1px solid #ccc}
+.register-wrap .position-list li.last{border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}
+.register-wrap .position-list li:hover{background:#ffdfa2;margin:0;}
+
+/*** register finish ***/
+.register-f-wrap .text{margin:104px auto 75px auto;text-align: center;font-size: 26px}
+.register-f-wrap .btn{margin-bottom: 120px}
+
+/*** modify account ***/
+.modify-account-wrap .body{margin-top: 50px;position: relative;}
+.modify-account-wrap .m-form .form-group i.error{position: absolute; right: 0;}
+.modify-account-wrap .body .password-box{position: absolute;left:90px;top:118px;margin-left: 0}
+.modify-account-wrap .body .password-box span{font-size: 20px}
+.modify-account-wrap .body .password-box .form-group{margin-bottom: 63px}
+.modify-account-wrap .body .password-box #captcha{width:120px;border:0;border-bottom: 1px solid #a2a2a2;border-radius: 0;height:40px;line-height:40px;padding-left: 10px;}
+.modify-account-wrap .body .password-box .captcha-btn{height:30px;line-height:30px;padding:0px 15px;width:110px;right:-134px;top:6px;}
+.modify-account-wrap .body .password-box #password{width:278px;padding:10px;}
+.modify-account-wrap .body .password-box .modify-btn{position:absolute;margin:0;height: 30px;line-height: 30px;padding: 0px 15px;width: 110px;right: -164px;top: -5px;border-radius: 10px}
+.modify-account-wrap .password-box label{padding-top:0;}
+.modify-account-wrap .m-form{margin-left:600px;}
+.modify-account-wrap .body .next-btn{margin:90px 0 37px -250px;}
+
+/*** reset password ***/
+.reset-wrap .header{margin:0px auto 50px auto;padding-top: 42px}
+.reset-wrap .reset-title{margin-left: 160px;font-size: 20px;margin-bottom: 38px}
+.reset-wrap .btn{margin:44px 0 76px 108px;}
+

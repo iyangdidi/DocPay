@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"><![endif]-->
+<!--[if IE 9]><html class="ie ie9"><![endif]-->
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+  <!-- <link href="favicon.ico" rel="icon" /> -->
+  <link rel="stylesheet" media="all" href="css/reset.css" />
+  <link rel="stylesheet" media="all" href="css/common.css" />
+  <link rel="stylesheet" media="all" href="css/report.css" />
+  <title>报告详情</title>
+ </head>
+ <body>
+ 	<!-- 全局顶部栏 -->
+ 	<div class="m-navbar" role="navigation">
+  		<div class="limit clearfix">
+	    	<a class="logo icon icon-logo fl" href="/"></a>
+	    	<div class="fr login-box">
+	    		<i class="icon icon-login_icon"></i>
+	    		<a class="sign-up" href="/register">注册</a> /
+	        	<a class="log-in" href="/login">登录</a>
+	    	</div>
+	    	<div class="fr login-box logged-in" style="display: none">
+	    		<a href="/record_list" class="record"><i class="icon icon-record_icon"></i>购买记录</a>
+	    		<span class="name"><a href="/modify_account">--</a>，已登录</span>
+	    		<i class="icon icon-islogin_icon"></i>
+	    	</div>
+     	</div>
+    </div>
+    <!-- end -->
+
+    <div class="wrap">
+    	<!-- tab切换 -->
+    	<div class="tab-wrap">
+		    <ul class="u-tab clearfix">
+		    	<li class="active"><a href="/">白皮书</a></li>
+		    	<li><a href="/week_report">周报</a></li>
+		    	<li><a href="/month_report">月报</a></li>
+		    	<li class=""><a href="">季报</a></li>
+		    	<li><a href="">半年报</a></li>
+		    </ul>
+		    <a href="/" class="go-home">&lt;&lt; 返回首页</a>
+	    </div>
+	    <!-- end -->
+
+	    <!-- 内容 -->
+	    <div class="u-content-wrap detail-wrap">
+	    	<div class="header bd-b">
+	    		<h2>2016年网络剧报告</h2>
+	    		<p class="sub-title">最专业的、全面的影视报告</p>
+	    	</div>
+	    	<div class="body">
+	    		<ul class="ul-wrap">
+		    		<li >目录</li>
+		    		<li >第一部分 2015年中国网络剧产业观察</li>
+		    		<li >第二部分 2015年中国网络剧产业观察</li>
+		    		<li >第三部分 2015年中国网络剧产业观察</li>
+		    		<li >第四部分 2015年中国网络剧产业观察</li>
+		    		<li >第一部分 2015年中国网络剧产业观察</li>
+		    		<li >第二部分 2015年中国网络剧产业观察</li>
+		    		<li >第三部分 2015年中国网络剧产业观察</li>
+		    		<li >第四部分 2015年中国网络剧产业观察</li>
+		    		
+		    	</ul>
+		    	<img src="http://placeholder.qiniudn.com/278x392" class="cover" />
+	    	</div>
+	    	<div class="footer clearfix">
+	    		<form action="doc/getDoc" method="post">
+					<input type="hidden" name="docName" value="2016年网络大电影产业发展研究报告"/>
+		    		<div class="fr">
+	    				<p class="u-cost"><em>200</em> 元/份</p>
+	    				<input type="submit" class="pay-btn" value="立即支付,可下载完整报告"></input>
+	    				<!-- <a href="javascript:;" class="pay-btn">立即支付,可下载完整报告</a> -->
+	    			</div>
+	    		</form>
+	    	</div>
+	    	
+	    </div>
+	    <!-- end -->
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/account_validate.js"></script>
+
+    <!--[if lt IE 9]>
+	  <script type="text/javascript" src="js/PIE.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+/*	function getDoc(){
+	    var requestGetDoc = {
+	    		"docName":"2016年网络大电影产业发展研究报告",
+	    		"phone":"122345r"
+	    };    
+	    $.ajax({
+	        type: "POST",
+	        url: "http://localhost:8085/doc/getDoc",
+	        contentType: "application/json; charset=utf-8",
+	        data: JSON.stringify(requestGetDoc),
+	        dataType: "json",
+	        success: function (data) {
+	        	if(data.state==8){//8=已经支付	        		
+	        		
+	        	    /* $.ajax({
+	        	        type: "POST",
+	        	        url: "http://localhost:8085/doc/download",
+	        	        contentType: "application/json; charset=utf-8",
+	        	        data: JSON.stringify(requestGetDoc),
+	        	        dataType: "json",
+	        	        success: function (data) {									
+	        	        },
+	        	        error: function (message) {	        	        	
+	        	        }
+	        	    }); */
+	        	}else if(data.state==6){//6=支付中	        		
+	        		alert(data.content);
+	        	}else if(data.state==7){//7=没有支付,跳转支付	        		
+	        		alert(data.content);
+	        		window.location.href="/pay";
+	        	}else{//未登录
+	        		alert(data.content);
+	        		window.location.href="/login";
+	        	}									
+	        },
+	        error: function (message) {
+	        	
+	        }
+	    });
+	};*/
+		$(function(){
+
+		})
+	</script>
+ </body>
+ </html>

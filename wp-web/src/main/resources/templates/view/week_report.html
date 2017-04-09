@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"><![endif]-->
+<!--[if IE 9]><html class="ie ie9"><![endif]-->
+<!--[if !IE]><!-->  <!--<![endif]-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"  
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">  
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+  <!-- <link href="favicon.ico" rel="icon" /> -->
+  <link rel="stylesheet" media="all" href="css/reset.css" />
+  <link rel="stylesheet" media="all" href="css/common.css" />
+  <link rel="stylesheet" media="all" href="css/report.css" />
+  <title>周报</title>
+ </head>
+ <body>
+ 	<!-- 全局顶部栏 -->
+ 	<div class="m-navbar" role="navigation">
+  		<div class="limit clearfix">
+	    	<a class="logo icon icon-logo fl" href="/"></a>
+	    	<div class="fr login-box" >
+	    		<i class="icon icon-login_icon"></i>
+	    		<a class="sign-up" href="/register">注册</a> /
+	        	<a class="log-in" href="/login">登录</a>
+	    	</div>
+	    	<div class="fr login-box logged-in" style="display: none">
+	    		<a href="/record_list" class="record"><i class="icon icon-record_icon"></i>购买记录</a>
+	    		<span class="name"><a href="">--</a>，已登录</span>
+				<a href="/modify_account"><i class="icon icon-islogin_icon"></i></a>
+	    	</div>
+     	</div>
+    </div>
+    <!-- end -->
+
+    <div class="wrap">
+    	<!-- tab切换 -->
+    	<div class="tab-wrap">
+		    <ul class="u-tab clearfix">
+		    	<li ><a href="/">白皮书</a></li>
+				<li class="active"><a th:href="@{/doc/getReportList(reportType=0)}">周报</a></li>
+				<li><a th:href="@{/doc/getReportList(reportType=1)}">月报</a></li>
+		    	<li class=""><a href="">季报</a></li>
+		    	<li><a href="">半年报</a></li>
+		    </ul>
+		    <a href="/" class="go-home">&lt;&lt; 返回首页</a>
+	    </div>
+	    <!-- end -->
+
+	    <!-- 内容 -->
+	    <div class="u-content-wrap week-wrap">
+		    <ul class="clearfix">
+		    	<li th:each="report, repoStat:${reportList}">
+		    		<p class="week-title" th:text="${report.name}"></p>
+		    		<div class="btn-group clearfix">
+		    			<a th:href="@{${report.url}}" class="see fl">立即查看</a>
+						<form action="/doc/download" method="post">
+						<input type="submit" class="download fr btn-group" value="立即下载"></input>
+						<input type="hidden" name="url" value="" th:value="${report.url}"/>
+						<input type="hidden" name="docName" value="" th:value="${report.name}"/>
+						</form>
+		    		</div>
+		    	</li>
+		    </ul>
+	    </div>
+	    <!-- end -->
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/account_validate.js"></script>
+
+    <!--[if lt IE 9]>
+	  <script type="text/javascript" src="js/PIE.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+	
+		$(function(){
+			$(".week-wrap ul li:eq(1)").css("border-top",0);
+			
+			
+		  /*  $.ajax({
+		        type: "GET",
+		        url: "http://localhost:8085/doc/getReportList?reportType=0",
+		        success: function (data) {	
+					var t = data;
+				},
+		        error: function (message) {
+		            var t = message;
+		        }
+		    });*/
+			
+
+		})
+		
+	</script>
+ </body>
+ </html>

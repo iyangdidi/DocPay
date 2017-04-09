@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <script th:src="@{/js/vue.js}"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/jquery-1.11.3.min.js}"></script>
+    <script th:src="@{http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js}"></script>    
+    <script type="text/javascript" src="../static/js/pingpp.js"></script>
+</head>
+<body>
+<div id="app">
+    <div id="qrcode"></div>
+</div>
+
+<div ><button id="btnSend" type="button" onClick="clickme()">Click Me!</button></div>
+<div id="text">
+    <ul>
+    <li>ertyuio</li>
+    <li value="" th:value="${reportList[0].name}"></li>
+    	<li th:each="report, repoStat:${reportList}">
+ 		    		<p class="week-title">2016/12/21-2016/12/27数据报告</p>
+		    		<div class="btn-group clearfix">
+		    			<a href="" class="see fl">立即查看</a>
+		    			<a href="javascript:void(0);" class="download fr">立即下载</a>
+		    		</div>   		
+    	</li>
+    </ul>
+</div>
+<script type="text/javascript">
+
+$(function(){
+	
+	/*
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8085/doc/getReportList?reportType=0",
+        success: function (data) {	
+			var t = data;
+        error: function (message) {
+            var t = message;
+        }
+    });
+	*/
+	$.get("http://localhost:8085/doc/getReportList", { reportType:0 },
+			  function(data){
+			    //alert("Data Loaded: " + data);
+			  });
+})
+
+function clickme(){
+    //$("#request-process-patent").html("�����ύ��ݣ�����رյ�ǰ����...");
+    //alert("click");
+    var requestPayForDoc = {
+    		"docName":"��ζ���",
+    		"payType":2,
+    		"amount":1000,
+    		"docDesc":"desc"
+    };    
+    //var url = "/doc/payForDoc";
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:8085/doc/payForDoc",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(requestPayForDoc),
+        dataType: "json",
+        success: function (data) {
+           
+        	
+            var charge = data.charge;
+            var channel = charge.channel;
+			var credential = charge.credential;
+			var url;
+			if(channel == "alipay_qr"){
+				url = credential.alipay_qr;				
+			}else if(channel == "wx_pub_qr"){
+				url = credential.wx_pub_qr;	
+			}			
+			jQuery('#qrcode').qrcode(url);
+			
+			
+			
+ /*   
+ 			//PC֧��������Ping++֧��HTML5ҳ��        
+            pingpp.createPayment(charge, function(result, err){
+                console.log(result);
+                console.log(err.msg);
+                console.log(err.extra);
+                if (result == "success") {
+                    // ֻ��΢�Ź����˺� wx_pub ֧���ɹ��Ľ��������ﷵ�أ������֧��������ת�� extra �ж�Ӧ�� URL��
+                } else if (result == "fail") {
+                    // charge ����ȷ����΢�Ź����˺�֧��ʧ��ʱ���ڴ˴�����
+                } else if (result == "cancel") {
+                    // ΢�Ź����˺�֧��ȡ��֧��
+                }
+            });
+*/
+        },
+        error: function (message) {
+            $("#request-process-patent").html("�ύ���ʧ�ܣ�");
+        }
+    });
+
+}
+
+function clickme2(){
+	var url = "";
+	jQuery('#qrcode').qrcode(url);
+}
+
+function GetJsonData() {
+    var json = {
+    		"docName":"��ζ���",
+    		"payType":3,
+    		"amount":1000,
+    		"docDesc":"desc"
+    };
+    return json;
+}
+
+/*
+$("#btnSend").click(function() {
+    $("#request-process-patent").html("�����ύ��ݣ�����رյ�ǰ����...");
+    var requestPayForDoc = {
+    		"docName":"��ζ���",
+    		"payType":3,
+    		"amount":1000
+    };
+    $.ajax({
+        type: "POST",
+        url: "/doc/getDoc",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(requestPayForDoc),
+        dataType: "json",
+        success: function (message) {
+            if (message > 0) {
+                alert("�������ύ�����ǻᾡ������ȡ����ϵ");
+            }
+        },
+        error: function (message) {
+            $("#request-process-patent").html("�ύ���ʧ�ܣ�");
+        }
+    });
+});
+*/
+
+
+
+
+</script>
+</body>
+</html>

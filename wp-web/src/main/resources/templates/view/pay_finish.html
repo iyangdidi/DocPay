@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"><![endif]-->
+<!--[if IE 9]><html class="ie ie9"><![endif]-->
+<!--[if !IE]><!--> <html> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+  <!-- <link href="favicon.ico" rel="icon" /> -->
+  <link rel="stylesheet" media="all" href="css/reset.css" />
+  <link rel="stylesheet" media="all" href="css/common.css" />
+  <link rel="stylesheet" media="all" href="css/pay.css" />
+  <title>登录</title>
+ </head>
+ <body>
+ 	<!-- 全局顶部栏 -->
+ 	<div class="m-navbar" role="navigation">
+  		<div class="limit clearfix">
+	    	<a class="logo icon icon-logo fl" href="/"></a>
+	    	<div class="fr login-box" style="display: none">
+	    		<i class="icon icon-login_icon"></i>
+	    		<a class="sign-up" href="/register">注册</a> /
+	        	<a class="log-in" href="/login">登录</a>
+	    	</div>
+	    	<div class="fr login-box logged-in" >
+	    		<a href="/record_list" class="record"><i class="icon icon-record_icon"></i>购买记录</a>
+	    		<span class="name"><a href="">--</a>，已登录</span>
+				<a href="/modify_account"><i class="icon icon-islogin_icon"></i></a>
+	    	</div>
+     	</div>
+    </div>
+    <!-- end -->
+
+    <div class="wrap">
+    	<!-- tab切换 -->
+    	<div class="tab-wrap">
+		    <ul class="u-tab clearfix">
+		    	<li class="active"><a href="/">白皮书</a></li>
+				<li><a href="/week_report">周报</a></li>
+				<li><a href="/month_report">月报</a></li>
+		    	<li class=""><a href="">季报</a></li>
+		    	<li><a href="">半年报</a></li>
+		    </ul>
+		    <a href="" class="go-home">&lt;&lt; 返回首页</a>
+	    </div>
+	    <!-- end -->
+
+	    <!-- 内容 -->
+	    <div class="u-content-wrap pay-finish-wrap">
+		    <div class="body bd-b">
+		    	<p>您购买的<em>《2016年网络剧报告》</em>已支付完成</p>
+		    	<button class="btn">下载报告至本地</button>
+		    </div>
+	    	<div class="foot">
+	    	</div>
+	    </div>
+	    <!-- end -->
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/account_validate.js"></script>
+
+    <!--[if lt IE 9]>
+	  <script type="text/javascript" src="js/PIE.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+		$(function(){
+
+		})
+	</script>
+ </body>
+ </html>

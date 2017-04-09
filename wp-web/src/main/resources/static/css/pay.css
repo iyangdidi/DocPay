@@ -1,0 +1,18 @@
+.header{padding:55px 0;}
+.header .u-title{margin:0px 38px 0 12px; }
+.header .name{margin-top: -4px;margin-right: 48px;font-weight: normal;}
+.u-cost{font-size: 18px;margin-top: -8px}
+.u-cost em{font-size: 32px;color:#f46e44;font-weight: bold;vertical-align: -7%;}
+.body{padding-left: 52px;}
+.body p{margin:36px 0 36px 27px;font-size: 18px}
+.body ul{margin-left: 36px}
+.body ul li{position:relative;width: 170px;height: 170px;line-height:170px;text-align: center;border-radius: 20px;border:1px solid #ccc;cursor: pointer;}
+.body ul li.active{border:1px solid #30c21d;}
+.body ul li img{vertical-align: middle;}
+.body ul li.alipay{margin-right:87px;}
+.body ul li .selected{position: absolute;bottom: 0;right:0;width:43px;height:43px;}
+.body .btn{width:340px;height: 37px;margin-top:77px;margin-bottom: 48px}
+.foot{height: 95px}
+.pay-finish-wrap p{text-align: center;padding:185px 0 98px 0;font-size: 20px;margin:0;}
+.pay-finish-wrap p em{font-size: 24px}
+.pay-finish-wrap .body button{margin-top:0;margin-bottom: 150px}

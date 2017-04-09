@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-Title: wp-web
+Implementation-Version: 1.0
+Implementation-Vendor-Id: com.guduo.wp
+Build-Jdk: 1.7.0_60
+Built-By: YangDi
+Created-By: Maven Integration for Eclipse
+Implementation-URL: http://projects.spring.io/spring-boot/wp-parent/wp
+ -web/
+

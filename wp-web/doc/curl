@@ -1,0 +1,17 @@
+D:\SportStory\newspring\curl
+
+curl -X POST -HContent-type:application/json;charset=utf-8 -d "{}" http://localhost:8085/guduowp/demo/list
+
+curl -X POST -HContent-type:application/json;charset=utf-8 -d "{\"resType\":0}" http://localhost:8085/guduowp/doc/getDocumentListByDocType
+
+//curl -X POST -request -HContent-type:application/json;charset=utf-8 -d "{\"docName\":\"theNameOfTheDocument\",\"docType\":0}" http://localhost:8085/doc/getDoc
+
+curl -X POST -request -HContent-type:application/json;charset=utf-8 -d "{\"docName\":\"theNameOfTheDocument\",\"payType\":3,\"amount\":10000}" http://localhost:8085/doc/payForDoc
+
+curl -X POST -request -HContent-type:application/json;charset=utf-8 -d "{\"phone\":\"15652960625\",\"password\":\"2223\"}" http://9997.stage.srv.guduomedia.com/api/user/logIn
+
+curl -X POST -request -HContent-type:application/json;charset=utf-8 -d "{\"phone\":\"15652960625\",\"password\":\"2223\"}" http://9997.stage.srv.guduomedia.com/api/user/logIn
+
+curl -X POST -request -HContent-type:application/json;charset=utf-8 -d "{\"docName\":\"theNameOfTheDocument\",\"requestType\":0}" http://localhost:8085/doc/getDoc
+
+curl -X POST -request -HContent-type:application/json;charset=utf-8 -d "{\"chargeId\":\"ch_WXP04CuX9KCSS0u9y9ajbDGK\"}" http://localhost:8085/order/checkOrder
