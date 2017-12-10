@@ -1,7 +1,24 @@
-# 说明
-项目基于Srping Boot，主要用到的有Spring MVC，SpringDateJpa等。运行项目需要在application.properties中将jdbc部分换成自己的。
-sql文件夹下wp_test.sql为简单的初始数据。
+# Project Background
+time: 2017.02 ~ 2017.03
+
+this a “Outsourcing project” of “Golden Guduo cultrue communication Ltd”
+I worked in school using my part time and get to the company once a week
+
+I developed the whole project by myself as an all stack developer
+I implemented a background system which can view, pay and download documents based on integrated. And here I used ping++ to manage the pay
+service.
+
+# Descrition
+this project is based on Srping Boot，and Spring MVC，SpringDateJpa are used.
+if you want to run it, just replace the jdbc settings in application.properties whit yours
+
+"sql" package: 
+wp_test.sql are some simple and basic initial data
+
 ### thu-common
-公共依赖模块，项目公用的BEAN，REPO，UTILS可以放到这里面
+public dependecy module
+public BEAN，REPO，UTILS can be put here
+
 ### thu-web
-WEB项目模块，在这里开发Service和Controller
+web project module
+service and controler are developed here
